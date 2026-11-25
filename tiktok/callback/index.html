@@ -1,0 +1,15 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Conexión con TikTok · Derecho Penal Studio</title><link rel="stylesheet" href="/estilo.css"></head><body><main><nav><a href="/">Inicio</a><a href="/terminos/">Términos</a><a href="/privacidad/">Privacidad</a></nav>
+<h1>Conexión con TikTok</h1>
+<div id="estado" class="card">Procesando…</div>
+<script>
+(function(){
+  var q=new URLSearchParams(location.search), el=document.getElementById('estado');
+  if(q.get('error')){el.textContent='TikTok devolvió un error: '+(q.get('error_description')||q.get('error'));return;}
+  var code=q.get('code');
+  if(!code){el.textContent='Esta página recibe la respuesta de TikTok al autorizar la app. No hay nada que hacer aquí por ahora.';return;}
+  el.innerHTML='<p><strong>¡Autorización recibida!</strong> Copia este código y entrégalo como te indicaron. Caduca en pocos minutos.</p><p><code id="c"></code></p><button id="b">Copiar código</button>';
+  document.getElementById('c').textContent=code;
+  document.getElementById('b').onclick=function(){navigator.clipboard.writeText(code);this.textContent='Copiado ✓';};
+})();
+</script>
+</main></body></html>
